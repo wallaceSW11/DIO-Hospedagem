@@ -18,7 +18,16 @@ Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
 // Cria uma nova reserva, passando a suíte e os hóspedes
 Reserva reserva = new Reserva(diasReservados: 5);
 reserva.CadastrarSuite(suite);
-reserva.CadastrarHospedes(hospedes);
+
+try
+{
+    reserva.CadastrarHospedes(hospedes);
+}
+catch (System.Exception ex)
+{
+    Console.WriteLine($"Não foi possível cadastrar hóspedes: {ex.Message} ");
+    return;
+}
 
 // Exibe a quantidade de hóspedes e o valor da diária
 Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
